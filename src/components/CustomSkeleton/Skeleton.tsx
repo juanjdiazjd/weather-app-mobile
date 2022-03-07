@@ -1,5 +1,6 @@
 import * as React from 'react';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { View } from 'react-native';
+//import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 interface CustomSkeletonProps {
   renderSkeleton: () => JSX.Element;
@@ -8,5 +9,5 @@ interface CustomSkeletonProps {
 export const CustomSkeleton: React.FunctionComponent<CustomSkeletonProps> = ({
   renderSkeleton,
 }) => {
-  return <SkeletonPlaceholder>{renderSkeleton()}</SkeletonPlaceholder>;
+  return <View>{renderSkeleton()}</View>;
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ListRenderItem, Text, View} from 'react-native';
 import styled from 'styled-components';
 import theme from '../../theme';
-import {formatDate, removeDecimals} from './utils/weather';
+import {formatDate, removeDecimals} from './utils';
 import {Forecast} from '../../types/Home/weather';
 import Carousel from 'react-native-snap-carousel';
 import {useRef, useState} from 'react';

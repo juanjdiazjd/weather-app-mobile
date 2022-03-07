@@ -3,10 +3,9 @@ import {Text, View} from 'react-native';
 import styled from 'styled-components';
 import theme from '../../theme';
 import {TextType, TextView} from '../Text/TextView';
-import {removeDecimals} from './utils/weather';
+import {removeDecimals} from './utils';
 import {WeatherData} from '../../types/Home/weather';
-import {generateSkeleton, WeatherIcon} from './styledComponents';
-import {FigureSize, SkeletonType} from '../CustomSkeleton/types';
+import {WeatherIcon} from './styledComponents';
 
 interface CardProps extends WeatherData {
   isFetching?: boolean;
@@ -44,23 +43,14 @@ export const Card: React.FunctionComponent<CardProps> = ({
   return (
     <WeatherWrapper>
       <WeatherCard>
-        {weather.icon ? (
-          <WeatherIcon
-            source={{
-              uri: `https://openweathermap.org/img/wn/${weather.icon}@4x.png`,
-            }}
-          />
-        ) : (
-          generateSkeleton(SkeletonType.image, FigureSize.small, {
-            alignSelf: 'flex-end',
-          })
-        )}
+        
+        <WeatherIcon
+          source={{
+            uri: `https://openweathermap.org/img/wn/${weather.icon}@4x.png`,
+          }}
+        />
         <View>
-          {weather.temp ? (
-            <TextTemp>{removeDecimals(weather.temp)}°</TextTemp>
-          ) : (
-            generateSkeleton(SkeletonType.text, FigureSize.large)
-          )}
+          <TextTemp>{removeDecimals(weather.temp)}°</TextTemp>
 
           <TextView
             id={'weather_city'}
