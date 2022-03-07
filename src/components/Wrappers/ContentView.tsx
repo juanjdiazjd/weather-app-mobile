@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
-//import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components';
 
 
@@ -14,7 +14,7 @@ interface ContentViewProps extends ViewProps {
   horizontalAlign?: 'flex-start' | 'center' | 'flex-end';
 }
 
-const ContentViewWithNotch = styled(View) <ContentViewProps>`
+const ContentViewWithNotch = styled(SafeAreaView) <ContentViewProps>`
   height: ${theme.sizes.fullHeight};
   width: ${({  fullWidth }) =>
     fullWidth ? theme.sizes.fullWidth : theme.sizes.contentWidth};

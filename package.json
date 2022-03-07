@@ -74,8 +74,11 @@
       "json",
       "node"
     ],
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native(-.*)?|@react-native(-community)?|@react-native|react-native|react-native-gesture-handler|react-native-*|react-native-.+|react-navigation|@react-navigation/.*|react-navigation-stack|react-native-localization|@react-native-community/.+)/)"
+      "node_modules/(?!((jest-)?react-native(-.*)?|@react-native(-community)?|@react-native|react-native|@react-native-masked-view|react-native-gesture-handler|react-native-*|react-native-.+|react-navigation|@react-navigation/.*|react-navigation-stack|react-native-localization|@react-native-community/.+)/)"
     ]
   }
 }
