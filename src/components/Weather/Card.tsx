@@ -1,11 +1,12 @@
-import * as React from 'react';
-import {Text, View} from 'react-native';
-import styled from 'styled-components';
-import theme from '../../theme';
-import {TextType, TextView} from '../Text/TextView';
-import {removeDecimals} from './utils';
-import {WeatherData} from '../../types/Home/weather';
-import {WeatherIcon} from './styledComponents';
+import * as React from "react";
+import { Text, View } from "react-native";
+import styled from "styled-components";
+import theme from "../../theme";
+import { TextType, TextView } from "../Text/TextView";
+import { removeDecimals } from "./utils/index";
+import { WeatherData } from "../../types/Home/weather";
+import { generateSkeleton, WeatherIcon } from "./styledComponents";
+import { FigureSize, SkeletonType } from "../CustomSkeleton/types";
 
 interface CardProps extends WeatherData {
   isFetching?: boolean;
@@ -43,22 +44,31 @@ export const Card: React.FunctionComponent<CardProps> = ({
   return (
     <WeatherWrapper>
       <WeatherCard>
-        
-        <WeatherIcon
-          source={{
-            uri: `https://openweathermap.org/img/wn/${weather.icon}@4x.png`,
-          }}
-        />
+        {weather.icon ? (
+          <WeatherIcon
+            source={{
+              uri: `https://openweathermap.org/img/wn/${weather.icon}@4x.png`,
+            }}
+          />
+        ) : (
+          generateSkeleton(SkeletonType.image, FigureSize.small, {
+            alignSelf: "flex-end",
+          })
+        )}
         <View>
-          <TextTemp>{removeDecimals(weather.temp)}°</TextTemp>
+          {weather.temp ? (
+            <TextTemp>{removeDecimals(weather.temp)}°</TextTemp>
+          ) : (
+            generateSkeleton(SkeletonType.text, FigureSize.large)
+          )}
 
           <TextView
-            id={'weather_city'}
+            id={"weather_city"}
             text={location.city}
             type={TextType.big}
             colorText={theme.colors.darkGray}
-            style={{opacity: 0.5}}
-            textAlign={'left'}
+            style={{ opacity: 0.5 }}
+            textAlign={"left"}
           />
         </View>
       </WeatherCard>
