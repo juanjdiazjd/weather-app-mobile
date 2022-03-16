@@ -56,6 +56,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+     <li><a href="#tests">Tests</a></li>
   </ol>
 </details>
 
@@ -108,5 +109,10 @@ npm run ios
 for android:
 npm run android
 
+
+<!-- TEST EXAMPLES -->
+## Tests
+
+npm run test
 
 
