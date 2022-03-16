@@ -7,6 +7,7 @@ const initialState: WeatherData<OptionsState> & ForecastData = {
   location: {},
   weather: {},
   forecast: {},
+  forecastSearchData:{},
   isFetchingCurrentMethod: undefined,
   errorCurrentMethod: undefined,
   isFetchingForecastMethod: undefined,
@@ -31,6 +32,12 @@ function homeReducer(state = initialState, action: actionType<WeatherData<Option
         ...state,
         forecast: action.payload?.forecast,
       };
+      case HomeActionTypes.SetForecastSearchWeather:
+        return {
+          ...state,
+          forecastSearchData: action.payload?.forecast,
+        };
+      
     case HomeActionTypes.IsFetchingForecastMethod:
       return {
         ...state,

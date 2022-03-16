@@ -36,5 +36,6 @@ export type WeatherData<T = {}> = T & {
   weather: Weather;
 }
 export type ForecastData<T = {}> = T & {
-  forecast: Forecast[]
+  forecast: Forecast[];
+  forecastSearchData: Forecast[];
 }

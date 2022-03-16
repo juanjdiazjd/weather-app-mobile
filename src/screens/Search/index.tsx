@@ -36,6 +36,7 @@ const SearchScreen = ({
   });
   const {
     isFetchingForecastMethod: isFetchingForecastMethod,
+    forecastSearchData: forecastSearchData,
     forecast: forecast,
   }: WeatherData<OptionsState> & ForecastData = useShallowEqualSelector(
     (state) => state.weatherCurrentReducer
@@ -47,7 +48,7 @@ const SearchScreen = ({
 
   const onChangeTextPress = useCallback(
     (search) => {
-      setLoading(true)
+      setLoading(true);
       setCity(search);
     },
     [getForecastWeather]
@@ -63,9 +64,9 @@ const SearchScreen = ({
   }, [latLong]);
 
   useEffect(() => {
-if(isFetchingForecastMethod === false){
-  setLoading(false)
-}
+    if (isFetchingForecastMethod === false) {
+      setLoading(false);
+    }
   }, [isFetchingForecastMethod]);
 
   return (
@@ -108,7 +109,11 @@ if(isFetchingForecastMethod === false){
           contentContainerStyle={{ flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
         >
-          {loading ? <CustomActivityIndicator />: <CarouselCustom layout="default" forecast={forecast} />}
+          {loading ? (
+            <CustomActivityIndicator />
+          ) : (
+            <CarouselCustom layout="default" forecast={!city ? forecast : forecastSearchData} />
+          )}
         </ScrollView>
       </ContentView>
     </WrapperView>

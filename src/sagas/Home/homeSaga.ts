@@ -63,7 +63,13 @@ function* fetchForecastWeather(action:actionType<LatLong>) {
       throw new Error(problem);
     }
     yield put(HomeActions.IsFetchingForecastMethod(false));
-    yield put(HomeActions.setForecastWeather(data));
+    if(action.payload?.lat && action.payload?.lon){
+      yield put(HomeActions.setForecastSearchWeather(data));
+
+    }else{
+      yield put(HomeActions.setForecastWeather(data));
+
+    }
   } catch (error) {}
 }
 
