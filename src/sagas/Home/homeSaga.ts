@@ -46,11 +46,11 @@ function* fetchCurrentWeather() {
     yield put(HomeActions.setCurrentWeather(data));
   } catch (error) {}
 }
-function* fetchForecastWeather() {
+function* fetchForecastWeather(action:actionType<LatLong>) {
   try {
-    const {coords: coords}: Geolocation.GeoPosition =
+    const {coords: coords}:  Geolocation.GeoPosition =
       yield currentPositionPromise(CONFIG_DEFAULT_LOCATION);
-    const bodyRequest: LatLong = {lat: coords.latitude, lon: coords.longitude};
+    const bodyRequest: LatLong = {lat: action.payload?.lat || coords.latitude, lon: action.payload?.lon || coords.longitude};
     const {ok, problem, data} = yield call(
       weatherAPI.forecastWeather,
       bodyRequest,

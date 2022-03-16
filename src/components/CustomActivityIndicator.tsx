@@ -13,7 +13,7 @@ export const CustomActivityIndicator: React.FunctionComponent<CustomActivityIndi
   return (
     <Modal
       transparent={true}
-      animationType={'none'}
+      animationType="fade"
       onRequestClose={() => {
       }}>
       <View

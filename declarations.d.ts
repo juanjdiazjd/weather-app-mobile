@@ -5,5 +5,5 @@ declare module "*.svg"{
     
 }
 declare module 'react-native-password-eye';
-
-declare module '@react-native-masked-view/masked-view'
+declare module 'react-native-indicators';
+declare module '@react-native-masked-view/masked-view';

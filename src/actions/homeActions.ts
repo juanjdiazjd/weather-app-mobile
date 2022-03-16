@@ -1,5 +1,5 @@
 import {createAction} from '../types/actionType';
-import {WeatherData} from '../types/Home/weather';
+import {LatLong, WeatherData} from '../types/Home/weather';
 import {HomeActionTypes} from './actionTypes';
 
 export type Status = {key: string; value: boolean};
@@ -14,8 +14,8 @@ export const HomeActions = {
       type: HomeActionTypes.IsFetchingCurrentMethod,
       payload: fetching,
     }),
-  getForecastWeather: () =>
-    createAction({type: HomeActionTypes.GetForecastWeather}),
+  getForecastWeather: (location?:LatLong) =>
+    createAction({type: HomeActionTypes.GetForecastWeather, payload:location}),
   setForecastWeather: (response: WeatherData) =>
     createAction({type: HomeActionTypes.SetForecastWeather, payload: response}),
   IsFetchingForecastMethod: (fetching: boolean) =>

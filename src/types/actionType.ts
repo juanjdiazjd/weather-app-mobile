@@ -1,12 +1,12 @@
 
-export type actionType = {
+export type actionType<T = {}> = {
     type: string;
     error?: boolean;
-    payload?: any;
+    payload?: T;
   };
 
   
-export const createAction = ({ type, error, payload }: actionType) => {
+export const createAction = ({ type, error, payload }: actionType<any>) => {
     return {
       type,
       error,

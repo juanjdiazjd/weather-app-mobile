@@ -1,7 +1,7 @@
 import {HomeActionTypes} from '../../actions/actionTypes';
 import {actionType} from '../../types/actionType';
-import {Forecast, ForecastData, WeatherData} from '../../types/Home/weather';
-import {CustomState, OptionsState} from '../../types/responseType';
+import {ForecastData, WeatherData} from '../../types/Home/weather';
+import {OptionsState} from '../../types/responseType';
 
 const initialState: WeatherData<OptionsState> & ForecastData = {
   location: {},
@@ -13,13 +13,13 @@ const initialState: WeatherData<OptionsState> & ForecastData = {
   errorForecastMethod: undefined,
 } as WeatherData<OptionsState> & ForecastData;
 
-function homeReducer(state = initialState, action: actionType) {
+function homeReducer(state = initialState, action: actionType<WeatherData<OptionsState> & ForecastData>) {
   switch (action.type) {
     case HomeActionTypes.SetCurrentWeather:
       return {
         ...state,
-        location: action.payload.location,
-        weather: action.payload.weather,
+        location: action.payload?.location,
+        weather: action.payload?.weather,
       };
     case HomeActionTypes.IsFetchingCurrentMethod:
       return {
@@ -29,7 +29,7 @@ function homeReducer(state = initialState, action: actionType) {
     case HomeActionTypes.SetForecastWeather:
       return {
         ...state,
-        forecast: action.payload.forecast,
+        forecast: action.payload?.forecast,
       };
     case HomeActionTypes.IsFetchingForecastMethod:
       return {

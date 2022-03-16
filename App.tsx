@@ -10,9 +10,11 @@ import SearchScreen from './src/screens/Search';
 import {Provider} from 'react-redux';
 import store from './src/store';
 import { MyTheme } from './src/utils/constants';
+import Config from 'react-native-config';
+import Geocoder from 'react-native-geocoding';
 
 export default function App() {
-  
+  Geocoder.init(Config.API_KEY_GOOGLE_MAPS);
   const Tab = createBottomTabNavigator();
   return (
     <Provider store={store}>
